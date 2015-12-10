@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Angularavelize\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

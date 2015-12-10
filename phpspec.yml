@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Angularavelize
+        psr4_prefix: Angularavelize
         src_path: app

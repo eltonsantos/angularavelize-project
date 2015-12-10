@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Angularavelize\Providers\AppServiceProvider::class,
+        Angularavelize\Providers\AuthServiceProvider::class,
+        Angularavelize\Providers\EventServiceProvider::class,
+        Angularavelize\Providers\RouteServiceProvider::class,
 
     ],
 
