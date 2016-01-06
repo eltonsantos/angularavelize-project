@@ -1,0 +1,8 @@
+.input-nome {margin-top: 20px;}
+.input-telefone {margin-top: 25px;}
+.selecionado {
+	background-color: yellow;
+}
+.negrito {
+	font-weight: bold;
+}

@@ -17,37 +17,60 @@
                     <div>
                         <h2 class="teal lighten-2 truncate card-panel"><% app %></h2>
                     </div>
-                    <table class="bordered highlight">
-                        <thead>
+                    <table class="bordered highlight" ng-show="contatos.length > 0" >
+                        
                             <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
+                                <th></th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>Operadora</th>
+                                <th></th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="contato in contatos">
+                       
+                            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
+                                <td>
+                                    <input type="checkbox" class="filled-in" id="check-<% contato.telefone %>" ng-model="contato.selecionado" />
+                                    <label for="check-<% contato.telefone %>"></label>
+                                </td>
                                 <td><% contato.nome %></td>
                                 <td><% contato.telefone %></td>
+                                <td><% contato.operadora.nome %></td>
+                                <td>
+                                    <div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div>
+                                </td>
                             </tr>
-                        </tbody>
+                        
                     </table>
                     <br />
+
                     <h6 class="card-panel teal lighten-2">Cadastrar contato</h6>
 
-                    <div class="input-field">
+                    <div class="input-field input-operadora">
+                        <select ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras">
+                            <option value="">Selecione uma operadora</option>
+                        </select>
+                    </div>
+                    <div class="input-field input-nome">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" class="validate" ng-model="nome">
-                        <label for="icon_prefix">Nome</label>
+                        <input id="icon_prefix" type="text" class="validate" ng-model="contato.nome">
+                        <label for="icon_prefix" data-error="Errado">Nome</label>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field input-telefone">
                         <i class="material-icons prefix">phone</i>
-                        <input id="icon_telephone" type="text" class="validate" ng-model="telefone">
-                        <label for="icon_telephone" data-error="Errado" data-success="Correto">Telefone</label>
+                        <input id="icon_telephone" type="text" class="validate" ng-model="contato.telefone">
+                        <label for="icon_telephone" data-error="Errado">Telefone</label>
                     </div>
-                    <div class="divider"></div>
-                    Nome: <% nome %>
-                    <br />
-                    Telefone: <% telefone %>
+
+                    <button class="btn waves-effect waves-light btn-add" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">
+                        Adicionar
+                        <i class="mdi-content-add right"></i>
+                    </button>
+
+                    <button class="btn waves-effect waves-light btn-rm red" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)" >
+                        Remover
+                        <i class="mdi-content-remove right"></i>
+                    </button>
+
                 </div>
                 <div class="col l3">
                      &nbsp;
